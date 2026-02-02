@@ -1,9 +1,10 @@
 ProductID,ProductName,Category,Brand,Price,Stock,ImageURL,DiscountPrice
-CA001,Veesper Baby Diaper,Baby Care / Diapers,Veesper,13000,1000,images/Veesper Baby Diaper Size 1,2,3 and 4 .jpeg,10500
+CA001,Veesper Baby Diaper,Baby Care / Diapers,Veesper,13000,1000,images/Veesper Baby Diaper Size 1 2 3 and 4 .jpeg,10500
 CA002, Besense Sanitary Pad,Feminine Hygiene / Sanitary Pads,Besense,5500,1000,images/Besense Sanitary Pad.jpeg,4000
 PA001, Intravenous Fluid,Medical,Baseus,9500,1000,images/Intravenous Fluids.jpeg,7500
 PA002,Zinc Oxide Adhesive Plaster 2.5cm x 5 yards,Medical,Century Care Ltd,10000,1000,images/Zinc Oxide Adhesive Plaster 2.5cm x 5 .jpeg,9000
 PA003,Medicated Mentholated Dusting Powder,Medical,ROBB,4000,1000,images/Dusting powder.jpeg,3500
+
 
 
 
