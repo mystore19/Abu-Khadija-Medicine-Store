@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abu-Khadija Medicine Store - Drug Prescription Request</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+    body {
+      background: linear-gradient(135deg, #f0f4ff, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      animation: fadeIn 0.4s ease;
+      position: relative;
+    }
+
+    .home-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #4f6cff;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .home-btn:hover { opacity: 0.9; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 { font-size: 22px; margin-bottom: 4px; }
+    h2.store { font-size: 15px; color: #4f6cff; margin-bottom: 10px; }
+    p.subtitle { color: #666; margin-bottom: 18px; font-size: 14px; }
+
+    .form-group { margin-bottom: 14px; }
+
+    label { display: block; margin-bottom: 6px; font-weight: 500; }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #4f6cff;
+      box-shadow: 0 0 0 3px rgba(79,108,255,0.12);
+    }
+
+    textarea { resize: vertical; }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.1); }
+
+    .note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+
+    .success {
+      margin-top: 12px;
+      background: #e8fff1;
+      color: #0f8a4b;
+      padding: 10px;
+      border-radius: 10px;
+      display: none;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE DESIGN */
+
+    /* Tablets */
+    @media (max-width: 768px) {
+      body { padding: 12px; }
+      .container { padding: 18px; }
+      h1 { font-size: 20px; }
+      .home-btn { font-size: 11px; padding: 7px 10px; }
+    }
+
+    /* Mobile phones */
+    @media (max-width: 480px) {
+      body {
+        align-items: flex-start;
+        padding-top: 10px;
+      }
+
+      .container {
+        max-width: 100%;
+        border-radius: 14px;
+        padding: 16px;
+        box-shadow: none;
+      }
+
+      h1 { font-size: 18px; }
+      h2.store { font-size: 14px; }
+      p.subtitle { font-size: 13px; }
+
+      input, textarea {
+        padding: 11px;
+        font-size: 13px;
+      }
+
+      .btn {
+        padding: 13px;
+        font-size: 14px;
+      }
+
+      .home-btn {
+        position: static;
+        display: inline-block;
+        margin-bottom: 12px;
+      }
+    }
+
+    /* Large desktops */
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 640px;
+        padding: 30px;
+      }
+
+      h1 { font-size: 24px; }
+      .btn { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a class="home-btn" href="https://mystore19.github.io/Abu-Khadija-Medicine-Store/">Home</a>
+
+    <h1>Drug Prescription Request</h1>
+    <h2 class="store">Abu-Khadija Medicine Store</h2>
+    <p class="subtitle">Fill in the prescription details and send directly to pharmacy via WhatsApp.</p>
+
+    <div class="form-group">
+      <label>Patient Name</label>
+      <input type="text" id="patientName" placeholder="Enter patient full name" />
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="e.g. 080XXXXXXXX" />
+    </div>
+
+    <div class="form-group">
+      <label>Drug Name</label>
+      <input type="text" id="drug" placeholder="Enter prescribed drug" />
+    </div>
+
+    <div class="form-group">
+      <label>Dosage</label>
+      <input type="text" id="dosage" placeholder="e.g. 500mg twice daily" />
+    </div>
+
+    <div class="form-group">
+      <label>Doctor's Notes</label>
+      <textarea id="notes" rows="3" placeholder="Additional instructions"></textarea>
+    </div>
+
+    <button class="btn" onclick="sendToWhatsApp()">Send Prescription via WhatsApp</button>
+
+    <div class="success" id="successMsg">Opening WhatsApp...</div>
+    <p class="note">Ensure WhatsApp is installed or WhatsApp Web is accessible.</p>
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      const patient = document.getElementById('patientName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const drug = document.getElementById('drug').value.trim();
+      const dosage = document.getElementById('dosage').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+
+      if (!patient || !phone || !drug) {
+        alert('Please fill in patient name, phone and drug.');
+        return;
+      }
+
+      const pharmacyNumber = "2349030013293";
+
+      const message = `*Abu-Khadija Medicine Store Prescription Request*%0A
+Patient: ${patient}%0A
+Phone: ${phone}%0A
+Drug: ${drug}%0ADosage: ${dosage}%0A
+Notes: ${notes}`;
+
+      document.getElementById('successMsg').style.display = 'block';
+
+      window.open(`https://wa.me/${pharmacyNumber}?text=${message}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>
