@@ -163,16 +163,6 @@ header { background:#0f172a; color:#fff; padding:1rem; text-align:center; }
   <h2>Abu-Khadija Medicine Store.</h2>
   <p>Medicine Store</p>
 </header>
-
-<div class="controls">
-  <input id="search" placeholder="Search..." onkeyup="filterProducts()">
-  <select id="category" onchange="filterProducts()">
-    <option value="all">All</option>
-    <option value="Baby Care / Diapers">Baby Care / Diapers</option>
-    <option value="Feminine Hygiene / Sanitary Pads">Feminine Hygiene / Sanitary Pads</option>
-<option value="Medical">Medical</option>
-  </select>
-</div>
 <style>
 a:link, a:visited {
   background-color: #f44336;
@@ -190,6 +180,16 @@ a:hover, a:active {
 </head>
 <body>
 <a href="drug.html" target="_blank">send us your drugs prescriptions</a>
+<div class="controls">
+  <input id="search" placeholder="Search..." onkeyup="filterProducts()">
+  <select id="category" onchange="filterProducts()">
+    <option value="all">All</option>
+    <option value="Baby Care / Diapers">Baby Care / Diapers</option>
+    <option value="Feminine Hygiene / Sanitary Pads">Feminine Hygiene / Sanitary Pads</option>
+<option value="Medical">Medical</option>
+  </select>
+</div>
+
 <section id="catalog" class="catalog"></section>
 
 <button class="cart-btn" onclick="openCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
@@ -317,6 +317,7 @@ function checkoutWhatsApp(){
 
 </body>
 </html>
+
 
 
 
