@@ -11,10 +11,47 @@
     body {
       background: linear-gradient(135deg, #f0f4ff, #ffffff);
       min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* STANDALONE HEADER */
+    .header {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .store-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #4f6cff;
+    }
+
+    .home-btn {
+      background: #4f6cff;
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .home-btn:hover { opacity: 0.9; }
+
+    .main-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
     }
 
     .container {
@@ -25,25 +62,7 @@
       padding: 24px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.08);
       animation: fadeIn 0.4s ease;
-      position: relative;
     }
-
-    .home-btn {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: #4f6cff;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .home-btn:hover { opacity: 0.9; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -51,7 +70,6 @@
     }
 
     h1 { font-size: 22px; margin-bottom: 4px; }
-    h2.store { font-size: 15px; color: #4f6cff; margin-bottom: 10px; }
     p.subtitle { color: #666; margin-bottom: 18px; font-size: 14px; }
 
     .form-group { margin-bottom: 14px; }
@@ -109,56 +127,22 @@
 
     /* RESPONSIVE DESIGN */
 
-    /* Tablets */
     @media (max-width: 768px) {
-      body { padding: 12px; }
-      .container { padding: 18px; }
-      h1 { font-size: 20px; }
-      .home-btn { font-size: 11px; padding: 7px 10px; }
+      .header { flex-direction: column; gap: 10px; align-items: flex-start; }
+      .store-title { font-size: 16px; }
     }
 
-    /* Mobile phones */
     @media (max-width: 480px) {
-      body {
-        align-items: flex-start;
-        padding-top: 10px;
-      }
-
-      .container {
-        max-width: 100%;
-        border-radius: 14px;
-        padding: 16px;
-        box-shadow: none;
-      }
-
+      body { padding: 10px; }
+      .container { padding: 16px; border-radius: 14px; box-shadow: none; }
       h1 { font-size: 18px; }
-      h2.store { font-size: 14px; }
       p.subtitle { font-size: 13px; }
-
-      input, textarea {
-        padding: 11px;
-        font-size: 13px;
-      }
-
-      .btn {
-        padding: 13px;
-        font-size: 14px;
-      }
-
-      .home-btn {
-        position: static;
-        display: inline-block;
-        margin-bottom: 12px;
-      }
+      input, textarea { padding: 11px; font-size: 13px; }
+      .btn { padding: 13px; font-size: 14px; }
     }
 
-    /* Large desktops */
     @media (min-width: 1200px) {
-      .container {
-        max-width: 640px;
-        padding: 30px;
-      }
-
+      .container { max-width: 640px; padding: 30px; }
       h1 { font-size: 24px; }
       .btn { font-size: 16px; }
     }
@@ -166,42 +150,48 @@
 </head>
 <body>
 
-  <div class="container">
-    <a class="home-btn" href="https://mystore19.github.io/Abu-Khadija-Medicine-Store/">Go To pharmacy store</a>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="store-title">Abu-Khadija Medicine Store</div>
+    <a class="home-btn" href="https://mystore19.github.io/Abu-Khadija-Medicine-Store/">GO BACK TO OUR STORE</a>
+  </div>
 
-    <h1>Drug Prescription Request</h1>
-    <h2 class="store">Abu-Khadija Medicine Store</h2>
-    <p class="subtitle">Fill in the prescription details and send directly to pharmacy via WhatsApp.</p>
+  <div class="main-wrapper">
+    <div class="container">
 
-    <div class="form-group">
-      <label>Patient Name</label>
-      <input type="text" id="patientName" placeholder="Enter patient full name" />
+      <h1>Drug Prescription Request</h1>
+      <p class="subtitle">Fill in the prescription details and send directly to pharmacy via WhatsApp.</p>
+
+      <div class="form-group">
+        <label>Patient Name</label>
+        <input type="text" id="patientName" placeholder="Enter patient full name" />
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="e.g. 080XXXXXXXX" />
+      </div>
+
+      <div class="form-group">
+        <label>Drug Name</label>
+        <input type="text" id="drug" placeholder="Enter prescribed drug" />
+      </div>
+
+      <div class="form-group">
+        <label>Dosage</label>
+        <input type="text" id="dosage" placeholder="e.g. 500mg twice daily" />
+      </div>
+
+      <div class="form-group">
+        <label>Doctor's Notes</label>
+        <textarea id="notes" rows="3" placeholder="Additional instructions"></textarea>
+      </div>
+
+      <button class="btn" onclick="sendToWhatsApp()">Send Prescription via WhatsApp</button>
+
+      <div class="success" id="successMsg">Opening WhatsApp...</div>
+      <p class="note">Ensure WhatsApp is installed or WhatsApp Web is accessible.</p>
     </div>
-
-    <div class="form-group">
-      <label>Phone Number</label>
-      <input type="tel" id="phone" placeholder="e.g. 080XXXXXXXX" />
-    </div>
-
-    <div class="form-group">
-      <label>Drug Name</label>
-      <input type="text" id="drug" placeholder="Enter prescribed drug" />
-    </div>
-
-    <div class="form-group">
-      <label>Dosage</label>
-      <input type="text" id="dosage" placeholder="e.g. 500mg twice daily" />
-    </div>
-
-    <div class="form-group">
-      <label>Doctor's Notes</label>
-      <textarea id="notes" rows="3" placeholder="Additional instructions"></textarea>
-    </div>
-
-    <button class="btn" onclick="sendToWhatsApp()">Send Prescription via WhatsApp</button>
-
-    <div class="success" id="successMsg">Opening WhatsApp...</div>
-    <p class="note">Ensure WhatsApp is installed or WhatsApp Web is accessible.</p>
   </div>
 
   <script>
@@ -233,4 +223,3 @@ Notes: ${notes}`;
 
 </body>
 </html>
-
